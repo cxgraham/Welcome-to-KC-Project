@@ -16,33 +16,6 @@ def register():
         return redirect('/')
     return redirect('/users/login')
 
-def allowed_file(filename):
-    return '.' in filename and \
-        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-@app.route('/users/dashboard/upload', methods=['GET', 'POST'])
-def upload_file():
-    if request.method == 'POST':
-        # check if the post request has the file part
-        if 'file' not in request.files:
-            flash('No file part')
-            return redirect(request.referrer)
-        file = request.files['file']
-        # If the user does not select a file, the browser submits an
-        # empty file without a filename.
-        if file.filename == '':
-            flash('No selected file')
-            return redirect('/users/dashboard')
-        if file and allowed_file(file.filename):
-            filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            data = {
-                'avatar': "/static/uploads/"+filename
-            }
-            user.User.upload_avatar(data)
-        return redirect(request.referrer)
-
-
 # READ
 @app.route('/')
 def index():
@@ -82,7 +55,32 @@ def top_five_bars():
 
 
 # UPDATE 
+def allowed_file(filename):
+    return '.' in filename and \
+        filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+@app.route('/users/dashboard/upload', methods=['GET', 'POST'])
+def upload_file():
+    if request.method == 'POST':
+        # check if the post request has the file part
+        if 'file' not in request.files:
+            flash('No file part')
+            return redirect(request.referrer)
+        file = request.files['file']
+        # If the user does not select a file, the browser submits an
+        # empty file without a filename.
+        if file.filename == '':
+            flash('No selected file')
+            return redirect('/users/dashboard')
+        if file and allowed_file(file.filename):
+            filename = secure_filename(file.filename)
+            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            data = {
+                'avatar': "/static/uploads/"+filename,
+                'id': request.form['users.id']
+            }
+            user.User.upload_avatar(data)
+        return redirect(request.referrer)
 
 # DELETE
 @app.route('/users/logout')

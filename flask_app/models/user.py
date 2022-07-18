@@ -36,15 +36,6 @@ class User:
         session['user_id'] = user_id
         return user_id
 
-    @classmethod
-    def upload_avatar(cls, data):
-        query = """
-        INSERT INTO users (avatar)
-        VALUES (%(avatar)s)
-        ;"""
-        results = connectToMySQL(cls.db).query_db(query, data)
-        return results
-
     # READ 
     @classmethod
     def get_user_by_email(cls, email):
@@ -84,7 +75,15 @@ class User:
 
 
     # UPDATE 
-
+    @classmethod
+    def upload_avatar(cls, data):
+        query = """
+        UPDATE users
+        SET avatar = %(avatar)s
+        WHERE users.id = %(id)s
+        ;"""
+        results = connectToMySQL(cls.db).query_db(query, data)
+        return results
 
     # DELETE 
 

@@ -11,14 +11,21 @@
 <body>
     <div class="dashboard">
         <div class="user_info">
-            <div class="avatar">
-                <img src= "{{this_user.avatar}}">
-            </div>
+            {% if this_user.avatar %}
+                <div class="avatar">
+                    <img src= "{{this_user.avatar}}">
+                </div>
+            {% endif %}
             <h2>Welcome {{this_user.first_name}} {{this_user.last_name}}!</h2>
             <h3>Email: {{this_user.email}}</h3>
-            <h3>Add Avatar</h3>
+            {% if this_user.avatar == null %}
+                <h3>Add Avatar</h3>
+            {% endif %}
+            {% if this_user.avatar %}
+                <h3>Change Avatar</h3>
+            {% endif %}
             <form action="/users/dashboard/upload" method='post' enctype=multipart/form-data>
-                <input type="hidden" name="avatar" value={{this_user.avatar}}>
+                <input type="hidden" name="users.id" value={{this_user.id}}>
                 <input type=file name=file>
                 <input type=submit value=Upload>
             </form>

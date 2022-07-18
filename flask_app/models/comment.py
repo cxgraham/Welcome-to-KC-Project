@@ -90,6 +90,7 @@ class Comment:
                 'last_name': this_comment['last_name'],
                 'email': this_comment['email'],
                 'password': this_comment['password'],
+                'avatar': this_comment['avatar'],
                 'created_at': this_comment['users.created_at'],
                 'updated_at': this_comment['users.updated_at']
             }

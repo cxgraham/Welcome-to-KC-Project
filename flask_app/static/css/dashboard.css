@@ -27,6 +27,12 @@
     margin-top: 10px;
 }
 
+.avatar img{
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+}
+
 .users_comments{
     margin: 20px auto;
     padding: 20px;
