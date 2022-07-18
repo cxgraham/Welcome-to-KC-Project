@@ -1,0 +1,45 @@
+[REQUIRED] Name: Christian Graham	
+[REQUIRED] Project Title: Welcome to Kansas City!
+[REQUIRED] Project Stack: Python
+[REQUIRED] GitHub Repo Link: https://github.com/cxgraham/Welcome-to-Kansas-City.git
+
+[REQUIRED] Project Description: The product is going to be a “Welcome to Kansas City Guide” that I will include my top five restaurants, bars, things to do, but more catered to people my age. Visitors will also be able to create an account and leave comments on each “blog post” about their experiences at the listed places or if they have had great experiences somewhere else. I currently live in downtown Kansas City and think this would be something cool to showcase where I live.
+
+[REQUIRED] New Programming Concept(s) I'm Planning to Learn: API's by connecting Google Maps
+
+Week 1 Features (to show at Review during Week 2)
+- create database 
+- create backend code
+- research adding google maps api and attempt to connect
+
+Week 2 Features (to show at first office hour/lecture of Week 3)
+- ***Finish CSS work (could be Bootstrap or another framework too instead of CSS)***
+- finish anything missed from frontend or backend
+- do a test through of everything
+
+Product Backlog (If I have more time after completing my MVP, I'll start to work on...)
+- creating many to many relationship with "likes" for the comments
+- JS hover events 
+
+
+
+
+
+Other Week 1 Tasks
+- Reply to Group Preferences Email
+- Schedule a Review during Week 2 (https://calendly.com/d/cnc-5t7-4yv/solo-project-sprint-w1-review)
+- Create GitHub repo for project
+- Create a .gitignore file for my project for my GitHub repo (enter in React, Python, or Java at https://www.toptal.com/developers/gitignore)
+- Finish this completed txt file and create project wireframe using Balsamiq (https://balsamiq.com/wireframes/) [Drawings and other wireframe programs also accepted!]
+- Email Zack this completed txt file, and project wireframe for approval
+- Submit completed wireframe on platform (https://login.codingdojo.com/m/97/6237/44911)
+- Complete Arrays To Do 1 & Strings To Do 1 assignments
+
+
+Other Week 2 Tasks
+- Schedule my time for my presentation (https://docs.google.com/spreadsheets/d/1h44-JSv6npmdqAftZHxLcX2FRDlSKEzEZlTOlizIGfw/edit#gid=414986054)
+- Begin to talk with assigned group about project ideas and what skills I bring to the table
+- Complete Singly Linked Lists Fronts & Display assignments
+
+
+

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css') }}">
+    {% include "header.html" %}
+    <title>HomePage</title>
+</head>
+<body>
+    <div class="main-content">
+        <div id="about-kc">
+            <div class="kc-info">
+                <h2><i>Welcome to Kansas City, Missouri!</i></h2>
+                <h3>
+                    Kansas City is known to many as the Heart of America, to some the city of fountains and Kansas Citians like me, home.
+                    We're known for tender and smokey barbeque, the Royals and Superbowl Champions, the Cheifs.
+                </h3>
+            </div>
+        </div>
+        <div class="articles">
+            <div id="top-eat">
+                <h2>Top Five Places to Eat</h2>
+                <h3>See what stellar cuisuine Kansas City has to offer</h3>
+                <a href="/top_five_restaurants">
+                    <button><h2>Learn More</h2></button>
+                </a>
+            </div>
+            <div id="top-to-do">
+                <h2>Top Five Things to Do</h2>
+                <h3>Not sure how to spend your weekend or visiting a friend? Kansas City has things to do for everyone</h3>
+                <a href="/top_five_things_to_do">
+                    <button><h2>Learn More</h2></button>
+                </a>
+            </div>
+            <div id="top-bar">
+                <h2>Top 5 Bars/Clubs to Visit</h2>
+                <h3>Kansas City's night life has something for everyone, from jazz bars to dance clubs.</h3>
+                <a href="/top_five_bars">
+                    <button><h2>Learn More</h2></button>
+                </a>
+            </div>
+        </div>
+    </div>
+    <iframe width="1000" height="400" padding="100" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/view?zoom=9&center=39.0997%2C-94.5786&key=AIzaSyBc7OZbSV1tqwlaO7cIETO2oJYyjQahTDw"></iframe>
+</body>
+</html>

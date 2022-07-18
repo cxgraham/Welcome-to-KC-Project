@@ -1,0 +1,126 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "copperplate", fantasy;
+}
+
+.top-five-and-comments{
+    display: flex;
+    background-color: #CCE6F4;
+}
+
+.things-to-do-info{
+    margin: 0px auto;
+    padding: 10px;
+    padding-bottom: 20px;
+    width: 100%;
+    text-align: center;
+    background-color: #175676;
+    color: white;
+}
+
+.things-to-do-info h3{
+    margin: 0px auto;
+    width: 800px;
+    text-align: center;
+    font-weight: normal;
+}
+
+.things-to-do{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#num-5-to-do, #num-4-to-do, #num-3-to-do, #num-2-to-do, #num-1-to-do{
+    margin: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+}
+
+#num-4-to-do, #num-2-to-do{
+    flex-direction: row-reverse;
+}
+
+#num-5-to-do h2{
+    margin: 0px auto;
+    padding-top: 45px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    background-image: url("/static/images/boulevardbrewery.png");
+    background-color: rgba(0, 0, 0, 0.379);
+    background-blend-mode: multiply;
+    background-size: 200px 150px;
+    color: white;
+}
+
+#num-4-to-do h2{
+    margin: 0px auto;
+    padding-top: 45px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    background-image: url("/static/images/farmersmarket.jpeg");
+    background-color: rgba(0, 0, 0, 0.379);
+    background-blend-mode: multiply;
+    background-size: 200px 150px;
+    color: white;
+}
+
+#num-3-to-do h2{
+    margin: 0px auto;
+    padding-top: 45px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    background-image: url("/static/images/nelsonatkins.jpeg");
+    background-color: rgba(0, 0, 0, 0.379);
+    background-blend-mode: multiply;
+    background-size: 200px 150px;
+    color: white;
+}
+
+#num-2-to-do h2{
+    margin: 0px auto;
+    padding-top: 45px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    background-image: url("/static/images/worldsoffun.png");
+    background-color: rgba(0, 0, 0, 0.379);
+    background-blend-mode: multiply;
+    background-size: 200px 150px;
+    color: white;
+}
+
+#num-1-to-do h2{
+    margin: 0px auto;
+    padding-top: 45px;
+    width: 200px;
+    height: 150px;
+    border: 1px solid black;
+    background-image: url("/static/images/firstfridays.jpeg");
+    background-color: rgba(0, 0, 0, 0.379);
+    background-blend-mode: multiply;
+    background-size: 200px 150px;
+    color: white;
+}
+
+.comments{
+    margin: 10px 0px;
+}
+
+.comments p{
+    margin-top: 10px;
+}
+
+.comment-form{
+    margin-top: 10px;
+}

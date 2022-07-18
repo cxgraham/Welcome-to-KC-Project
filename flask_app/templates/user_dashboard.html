@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/dashboard.css') }}">
+    {% include 'header.html' %}
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="user_info">
+            <div class="avatar">
+                <img src= "{{this_user.avatar}}">
+            </div>
+            <h2>Welcome {{this_user.first_name}} {{this_user.last_name}}!</h2>
+            <h3>Email: {{this_user.email}}</h3>
+            <h3>Add Avatar</h3>
+            <form action="/users/dashboard/upload" method='post' enctype=multipart/form-data>
+                <input type="hidden" name="avatar" value={{this_user.avatar}}>
+                <input type=file name=file>
+                <input type=submit value=Upload>
+            </form>
+        </div>
+        <div class="users_comments">
+            <h2>Your Comments:</h2>
+            {% for comments in this_user.comments %}
+                {% if comments.comment_type == 'restaurants' %}
+                <p>On the page, <i>"Top Five Restaurants in Kansas City"</i>, you said <i>"{{comments.comment_text}}"</i> on {{comments.date}}</p>
+                <a href="/top_five_restaurants">View</a> |
+                <a href="/comments/edit/{{comments.id}}">Edit</a> |
+                <a href="/comments/delete/{{comments.id}}">Delete</a>
+                {% elif comments.comment_type == 'bars' %}
+                <p>On the page, <i>"Top Five Bars in Kansas City"</i>, you said <i>"{{comments.comment_text}}"</i> on {{comments.date}}</p>
+                <a href="/top_five_bars">View</a> |
+                <a href="/comments/edit/{{comments.id}}">Edit</a> |
+                <a href="/comments/delete/{{comments.id}}">Delete</a>
+                {% elif comments.comment_type == 'to_do' %}
+                <p>On the page, <i>"Top Five Things to do in Kansas City"</i>, you said <i>"{{comments.comment_text}}"</i> on {{comments.date}}</p>
+                <a href="/top_five_things_to_do">View</a> |
+                <a href="/comments/edit/{{comments.id}}">Edit</a> |
+                <a href="/comments/delete/{{comments.id}}">Delete</a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+    <iframe width="1000" height="400" style="border:0" loading="lazy" allowfullscreen src="https://www.google.com/maps/embed/v1/view?zoom=9&center=39.0997%2C-94.5786&key=AIzaSyBc7OZbSV1tqwlaO7cIETO2oJYyjQahTDw"></iframe>
+
+</body>
+</html>

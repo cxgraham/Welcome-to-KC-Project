@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/edit_comment.css') }}">
+    {% include 'header.html' %}
+    <title>Edit Comment</title>
+</head>
+<body>
+    <div class="edit-comment">
+        <div class="edit-form">
+            <h1>Edit Comment</h1>
+            <form action="/comments/update", method = 'post'>
+                <input type="hidden" name="user_id" value={{session.user_id}}>
+                <input type="hidden" name="comment.id" value={{this_comment.id}}>
+                {% with messages = get_flashed_messages(category_filter = ['comment']) %}
+                    {% if messages %}
+                        <div id="popup">
+                            {% for message in messages %}
+                                <p>{{message}}</p>
+                            {% endfor %}
+                        <button onclick="popup.remove()">Okay</button>
+                        </div>
+                    {% endif %}
+                {% endwith %}
+                <textarea name="comment_text" cols="30" rows="10">{{this_comment.comment_text}}</textarea>
+                <div>
+                <input id="update" type="submit" value="Update Comment">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "copperplate", fantasy;
+}
+
+.main-content{
+    padding-top: 50px;
+    background-image: url('/static/images/kansascityart.jpeg');
+    background-color: white;
+    background-size: 100px;
+    border: 1px solid transparent;
+    height: 450px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.register, .login{
+    background-color: #BA324F;
+    border-radius: 5px;
+    width: 300px;
+    height: 350px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    color: white;
+}
+
+.register h1, .login h1{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.register label, .register input, .login label, .login input{
+    display: block;
+}
+
+.submit{
+    margin-top: 20px;
+    padding: 5px;
+    border: 4px solid white;
+    color: white;
+    background-color: inherit;
+}

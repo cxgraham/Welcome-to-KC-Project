@@ -1,0 +1,121 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "copperplate", fantasy;
+}
+
+.header{
+    margin: 10px;
+    padding: 0px 10px;
+    display: flex;
+    justify-content: space-between;
+    color: #D62839;
+}
+
+.title span{
+    font-weight: normal;
+}
+
+.nav-links a{
+    text-decoration: none;
+    color: inherit;
+}
+
+#skyline{
+    width:100%;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    border: 10px solid #BA324F;
+}
+
+.main-content{
+    background-image: url('/static/images/kansas-city-collage.png');
+    background-color: #cccccc;
+    background-size: 100% 100%;
+    border: 1px solid #f3f0e6;
+}
+
+.kc-info{
+    margin: 10px auto;
+    padding: 10px;
+    padding-bottom: 20px;
+    width: 750px;
+    text-align: center;
+    background-color: #BA324F;
+    color: white;
+    border-radius: 5px;
+}
+
+.kc-info h2{
+    margin: 10px;
+}
+
+#about-kc{
+    height: 300px;
+    padding: 75px;
+}
+
+.articles{
+    margin: 20px 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+#top-eat, #top-to-do, #top-bar{
+    border: 10px solid #BA324F;
+    border-radius: 5px;
+    margin: 10px;
+    width: 350px;
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#top-eat{
+    background-image: url("/static/images/food-img.jpg");
+    background-color: rgba(0, 0, 0, 0.379);
+    background-blend-mode: multiply;
+    background-size: 350px 400px;
+    color: white;
+}
+
+#top-to-do{
+    background-image: url("/static/images/nelsonatkins.jpeg");
+    background-color: rgba(0, 0, 0, 0.379);
+    background-blend-mode: multiply;
+    background-size: 350px 400px;
+    color: white;
+}
+
+#top-bar{
+    background-image: url("/static/images/drink-img.jpeg");
+    background-color: rgba(0, 0, 0, 0.379);
+    background-blend-mode: multiply;
+    background-size: 350px 400px;
+    color: white;
+}
+
+iframe{
+    display: block;
+    margin: 0px auto;
+    background-color: #BA324F;
+}
+
+#top-eat button, #top-to-do button, #top-bar button{
+    width: 200px;
+    background-color: transparent;
+    color: white;
+    border: 3px solid white;
+}
+
+
+
+
+

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/top_five_to_do.css') }}">
+    {% include 'header.html' %}
+    <title>Top Five Things to do</title>
+</head>
+<body>
+    <div class="main-content">
+        <div class="things-to-do-info">
+            <h1>Top Five Things to do in Kansas City</h1>
+            <h3>
+                Kansas City has a lot of things to offer and experiences for everyone, whether it is on a weekend or weekday.
+                Kansas City has options for you!
+            </h3>
+        </div>
+        <div class="top-five-and-comments">
+            <div class="things-to-do">
+                <div id="num-5-to-do">
+                    <div class="top-5">
+                        <h2>Number 5: <span>Boulevard Brewery</span></h2>
+                    </div>
+                    <p>
+                        Boulevard Brewery was founded in 1989 and has become one of the top beer companies in Kansas City.
+                        They offer tours of brewery, tastings, and offer patio seating with bar snacks. You can't visit Kansas City without tasting Kansas City's beer.
+                    </p>
+                </div>
+                <div id="num-4-to-do">
+                    <div class="top-5">
+                        <h2>Number 4: <span>The Farmers Market</span></h2>
+                    </div>
+                    <p>
+                        Kansas City's River Market hosts a farmers market every weekend for the community to enjoy.
+                        The Farmers Market has vendors that sell produce, plants, specialty-made foods and even hand-made knick-knacks!
+                        Afterwards, you can grab a bite from a local restaurant or grab a coffee from a cafe. The Farmers Market is a Kansas City MUST.
+                    </p>
+                </div>
+                <div id="num-3-to-do">
+                    <div class="top-5">
+                        <h2>Number 3: <span>The Nelson-Atkins Musuem</span></h2>
+                    </div>
+                    <p>
+                        Whether you're a history nerd or an art buff, the Nelson-Atkins Musuem offers an experince like no other.
+                        Nelson-Atkins offers interactive exhibitions, art history and even games outside for everyone to enjoy. 
+                        They also have a cafe in the musuem, so you can enjoy a coffee during your visit. They also have the iconic 
+                        Shuttlecock Statue because you're not in Kansas City if you don't see a shuttlecock.
+                    </p>
+                </div>
+                <div id="num-2-to-do">
+                    <div class="top-5">
+                        <h2>Number 2: <span>Worlds of Fun</span></h2>
+                    </div>
+                    <p>
+                        Kansas City offers it's very own amusement park, World of Fun, that is native to Kansas City only. 
+                        Worlds of Fun has 100 foot tall roller coasters, self-releasing zip-cord, and even an attached waterpark.
+                        Worlds of Fun is a full day of well, fun!
+                    </p>
+                </div>
+                <div id="num-1-to-do">
+                    <div class="top-5">
+                        <h2>Number 1: <span>First Fridays</span></h2>
+                    </div>
+                    <p>
+                        Back to my art people, First Fridays is an event that is held the first Friday of every month, when it is warmer. 
+                        First Fridays is a showcase of Kansas City's artists and what they have to offer. The Crossroads is taken over by local Kansas Citians 
+                        viewing art galleries, purchasing from vendors or choosing food from the block of food trucks. First Fridays is a great way to see what Kansas City has to offer.
+                    </p>
+                </div>
+            </div>
+            <div class="comments">
+                <h2>Comments:</h2>
+                {% for comment in all_comments %}
+                    {% if comment.comment_type == 'to_do' %}
+                        <p><span><strong>{{comment.commentor.first_name}}</strong></span> said <i>"{{comment.comment_text}}"</i> on {{comment.date}}</p>
+                        {% if comment.user_id == session.user_id %}
+                            <a href="/comments/edit/{{comment.id}}">Edit</a> |
+                            <a href="/comments/delete/{{comment.id}}">Delete</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}            
+                <div class="comment-form">
+                    <h2>Share Your Experience!</h2>
+                    <form action="/comments/create/things_to_do", method = 'post'>
+                        {% with messages = get_flashed_messages(category_filter = ['comment']) %}
+                            {% if messages %}
+                                <div id="popup">
+                                    {% for message in messages %}
+                                    <p>{{message}}</p>
+                                    {% endfor %}
+                                    <button onclick="popup.remove()">Okay</button>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                        <input type="hidden" name="user_id" value={{session.user_id}}>
+                        <textarea name="comment_text" cols="30" rows="10" placeholder="Add Comment"></textarea>
+                        <div>
+                            <input type="submit" value="Add Comment">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

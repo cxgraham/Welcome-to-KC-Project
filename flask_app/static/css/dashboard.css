@@ -1,0 +1,50 @@
+* {
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-family: "copperplate", fantasy;
+}
+
+.dashboard{
+    background-image: url('/static/images/kansascityart.jpeg');
+    background-color: white;
+    background-size: 100px;
+    border: 1px solid transparent;
+    height: 450px;
+}
+
+.user_info{
+    margin: 30px auto;
+    padding: 10px 0px;
+    text-align: center;
+    background-color: #BA324F;
+    width: 500px;
+    border-radius: 5px;
+    color: white;
+}
+
+.user_info h3{
+    margin-top: 10px;
+}
+
+.users_comments{
+    margin: 20px auto;
+    padding: 20px;
+    width: 800px;
+    background-color: #BA324F;
+    color: white;
+    border-radius: 5px;
+}
+
+.users_comments a{
+    color: inherit;
+}
+
+.users_comments p{
+    margin-top: 10px;
+}
+
+iframe{
+    display: block;
+    margin: 0px auto;
+}

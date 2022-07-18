@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/top_five_bar.css') }}">
+    {% include 'header.html' %}
+    <title>Top Five Bar</title>
+</head>
+<body>
+    <div class="main-content">
+        <div class="bar-info">
+        <h1>Top Five Bars in Kansas City</h1>
+        <h3>
+            Kansas City's nightlife is full of a mixed crowd, young and old. There are different bars for everyone to enjoy, 
+            but I am going to tell you my top five that you should definitely visit, and if you have, go again!
+        </h3>
+        </div>
+        <div class="top-five-and-comments">
+            <div class="bars">
+                <div id="num-5-bar">
+                    <div class="top-5">
+                        <h2>Number 5: The Phoenix</h2>
+                    </div>
+                    <p>
+                        The Phoenix is a local bar that has live jazz music playing nightly! Local singers perform everynight and
+                        the bar has the perfect ambiance to match. The Phoenix is a nice whole in the wall that a lot of locals don't know about.
+                    </p>
+                </div>
+                <div id="num-4-bar">
+                    <div class="top-5">
+                        <h2>Number 4: Hi-Dive</h2>
+                    </div>
+                    <p>
+                        Just like it in the name, Hi-Dive is a local dive bar. They have a spacious, heated patio and is located to several other bars 
+                        and places to grab food after a drunk night. They are known for their beer vending machine! Beer vending machine?
+                        Well, for a few dollars you are randomly chosen a beer from the vending machine, could be anything from Guiness to Coors Light. 
+                        Even the bartenders don't know what you'll be getting. 
+                    </p>
+                </div>
+                <div id="num-3-bar">
+                    <div class="top-5">
+                        <h2>Number 3: Fountain Haus</h2>
+                    </div>
+                    <p>
+                        Fountain Haus is a multi-leveled bar that just recently opened this year. It is a LGBTQ+ and ally bar that offers
+                        a different vibe on each floor. Do you want to just chill on a rooftop patio? Or want to get on the dancefloor? Or see a drag show? 
+                        Fountain Haus has it all!
+                    </p>
+                </div>
+                <div id="num-2-bar">
+                    <div class="top-5">
+                        <h2>Number 2: Green Lady Lounge</h2>
+                    </div>
+                    <p>
+                        If you want to feel boujie and high-class, Green Lady Lounge is the place to be. They also offer live music with the low-light ambiance 
+                        to match. They offer specialty cocktails and different seatings areas for every personality. It is a great place to enjoy a nice night with friends 
+                        or an after-dinner drink. 
+                    </p>
+                </div>
+                <div id="num-1-bar">
+                    <div class="top-5">
+                        <h2>Number 1: Missie B's</h2>
+                    </div>
+                    <p>
+                        My number one is Kansas City's own Missie B's. Missie B's is one of the first gay bars in Kansas City. 
+                        They have drag performers almost nightly with a dancefloor upstairs. Missie's offers a seating bar and lounge area,
+                        a light-up dancefloor and even a smoking area. If you're looking for a fun night, Missie B's is the place to be.
+                    </p>
+                </div>
+            </div>
+            <div class="comments">
+                <h2>Comments:</h2>
+                {% for comment in all_comments %}
+                    {% if comment.comment_type == 'bars' %}
+                        <p>
+                            <strong>{{comment.commentor.first_name}}</strong> said "{{comment.comment_text}}" on {{comment.date}}
+                            {{comment.likes}} Like(s)
+                        </p>
+                        {% if comment.user_id == session.user_id %}
+                            <a href="/comments/edit/{{comment.id}}">Edit</a> |
+                            <a href="/comments/delete/{{comment.id}}">Delete</a>
+                        {% endif %}
+                        {% if comment.user_id != session.user_id %}
+                        <form action="comments/add_like", method = 'post'>
+                            <input type="hidden" name="comments.id" value={{comment.id}}>
+                            <input type="submit" value="Like">
+                        </form>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <div class="comment-form">
+                    <h2>Share Your Experience!</h2>
+                    <form action="/comments/create/bars", method = 'post'>
+                        {% with messages = get_flashed_messages(category_filter = ['comment']) %}
+                            {% if messages %}
+                                <div id="popup">
+                                    {% for message in messages %}
+                                    <p>{{message}}</p>
+                                    {% endfor %}
+                                    <button onclick="popup.remove()">Okay</button>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                        <input type="hidden" name="user_id" value={{session.user_id}}>
+                        <textarea name="comment_text" cols="20" rows="5" placeholder="Add Comment"></textarea>
+                        <div>
+                            <input type="submit" value="Add Comment">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

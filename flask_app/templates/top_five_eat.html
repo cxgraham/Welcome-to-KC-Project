@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/top_five_eat.css') }}">
+    {% include 'header.html' %}
+    <title>Document</title>
+</head>
+<body>
+    <div class="main_content">
+        <div class="restaurant-info">
+            <h1>Top Five Restaurants in Kansas City</h1>
+            <h3>
+                Are you looking for somewhere new for dinner? Visiting a looking for local restaurants? 
+                Or are you just a local curious Kansas Citian? Whoever you are, these are the top five restaurants in Kansas City in my opinion.
+            </h3>
+        </div>
+        <div class="top-five-and-comments">
+            <div class="restaurants">
+                <div id="num-5-eat">
+                    <div class="top-5">
+                        <h2>Number 5: Brickhouse</h2>
+                    </div>
+                    <p>
+                        If you haven't been to Brickhouse, it is a Kansas City MUST in my opinion.
+                        They offer a variety of bar-style food, an amazing happy hour and a patio with an outside bar and games.
+                        Brickhouse also does brunch on the weekends! Bottomless mimosas anyone?
+                    </p>
+                </div>
+                <div id="num-4-eat">
+                    <div class="top-5">
+                        <h2>Number 4: Joe's Kansas City B-B-Q</h2>
+                    </div>
+                    <p>
+                        Now it wouldn't be Kansas City if barbeque wasn't included on this list.
+                        Joe's KC BBQ is a gem known for their ribs and their signature "Z-Man" sandwich.
+                        They even ship their barbeque anywhere in the US! 
+                    </p>
+                </div>
+                <div id="num-3-eat">
+                    <div class="top-5">
+                        <h2>Number 3: Tribe Street Kitchen</h2>
+                    </div>
+                    <p>
+                        Located in the heart of Kansas City's River Market, Tribe Street Kitchen offers a globally inspired menu with a relaxing bar experience.
+                        Tribe Street Kitchen offers food for all diets and specialty drinks that you won't find anywhere else.
+                        There are plants all over the restaurant that add that relaxing touch.
+                    </p>
+                </div>
+                <div id="num-2-eat">
+                    <div class="top-5">
+                        <h2>Number 2: Fiorella's Jack Stack BBQ</h2>
+                    </div>
+                    <p>
+                        Jack Stack BBQ is, in my opinion, one of the best, if not the best, barbeque that KC has to offer.
+                        Jack Stack has been in Kansas City since 1957, and they have proved to be a Kansas City staple.
+                        With eleven hickory-smoked meat options and sides for everyone to choose from, you will be glad you didn't miss out.
+                    </p>
+                </div>
+                <div id="num-1-eat">
+                    <div class="top-5">
+                        <h2>Number 1: Westside Local</h2>
+                    </div>
+                    <p>
+                        Now I know that I may get banished from Kansas City for not having barbeque as my number one, but Westside Local is too good to not be in the first place.
+                        Westside Local offers a creative farm-to-table experience with their menu changing with the seasons.
+                        They offer specialty crafted cocktails and was awarded best patio in KC in 2018.
+                    </p>
+                </div>
+            </div>
+            <div class="comments">
+                <h2>Comments:</h2>
+                {% for comment in all_comments %}
+                    {% if comment.comment_type == 'restaurants' %}
+                        <p><strong>{{comment.commentor.first_name}}</strong> said <i>"{{comment.comment_text}}"</i> on {{comment.date}}</p>
+                        {% if comment.user_id == session.user_id %}
+                            <a href="/comments/edit/{{comment.id}}">Edit</a> |
+                            <a href="/comments/delete/{{comment.id}}">Delete</a>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+                <div class="comment-form">
+                    <h2>Share Your Experience!</h2>
+                    <form action="/comments/create/restaurants", method = 'post'>
+                        {% with messages = get_flashed_messages(category_filter = ['comment']) %}
+                            {% if messages %}
+                                <div id="popup">
+                                    {% for message in messages %}
+                                    <p>{{message}}</p>
+                                    {% endfor %}
+                                    <button onclick="popup.remove()">Okay</button>
+                                </div>
+                            {% endif %}
+                        {% endwith %}
+                        <input type="hidden" name="user_id" value={{session.user_id}}>
+                        <textarea name="comment_text" cols="30" rows="10" placeholder="Add Comment"></textarea>
+                        <div>
+                            <input type="submit" value="Add Comment">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
