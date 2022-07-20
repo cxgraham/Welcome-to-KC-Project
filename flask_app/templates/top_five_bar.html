@@ -82,12 +82,12 @@
                             <a href="/comments/edit/{{comment.id}}">Edit</a> |
                             <a href="/comments/delete/{{comment.id}}">Delete</a>
                         {% endif %}
-                        {% if comment.user_id != session.user_id %}
+                        <!-- {% if comment.user_id != session.user_id %}
                         <form action="comments/add_like", method = 'post'>
                             <input type="hidden" name="comments.id" value={{comment.id}}>
                             <input type="submit" value="Like">
                         </form>
-                        {% endif %}
+                        {% endif %} -->
                     {% endif %}
                 {% endfor %}
                 <div class="comment-form">

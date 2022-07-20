@@ -52,7 +52,8 @@ def add_comment(id):
 @app.route('/comments/update', methods = ['POST'])
 def edit_comment():
     data = {
-        'comment_text': request.form['comment_text']
+        'comment_text': request.form['comment_text'],
+        'id': request.form['comment.id']
     }
     comment.Comment.edit_comment_by_id(data)
     return redirect ('/users/dashboard')
